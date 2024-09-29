@@ -6,10 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
     play_button.addEventListener("click", () => {
         menu.style.display = "none";
         game.style.display = "block";
+        startGame();
     })
 
     function startGame(){
-        console.log("Game Started");
+        new WordGame();
     }
 
 });
