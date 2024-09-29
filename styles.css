@@ -59,8 +59,8 @@ main {
     grid-template-columns: max-content max-content max-content max-content max-content;
     background-color: #2196F3;
     border: 2px solid #000000;
-    gap: 15px;
-    padding: 15px;
+    gap: 1.5vw;
+    padding: 1.5vw;
 }
 
 .grid-item {
