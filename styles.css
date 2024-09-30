@@ -30,70 +30,149 @@ main {
     margin: 0 auto;
 }
 
-#Menu {
+#Menu, #Game {
     text-align: center;
     align-items: center;
     width: 100%;
 }
 
-#Game {
-    text-align: center;
-    align-items: center;
-    width: 100%;
-}
-
-#PlayButton {
+#PlayButton, #MenuButton {
     font-family: Arial, sans-serif;
-    padding: 10px 25px;
+    padding: 1vh 2vh;
+    margin: 1vh auto;
     background-color: #E0E0E0;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 2vh;
 }
 
-#PlayButton:active {
+#PlayButton:active, #MenuButton:active {
     background-color: #B0B0B0;
+}
+
+.score-container {
+    display: flex;
+    justify-content: center;
+    gap: 1vh;
+    margin-bottom: 1vh;
+}
+
+.score-box {
+    background-color: #2196F3;
+    color: white;
+    padding: 1vh 2vh;
+    border-radius: 5px;
+    font-size: 3vh;
+    font-weight: bold;
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: max-content max-content max-content max-content max-content;
+    grid-template-columns: repeat(5, 8vh);
+    gap: 1vh;
     background-color: #2196F3;
     border: 2px solid #000000;
-    gap: 1.5vw;
-    padding: 1.5vw;
+    padding: 1vh;
+    margin: 2vh auto;
+    width: max-content;
 }
 
 .grid-item {
-    background-color: aqua;
+    background-color: lightskyblue;
     border: 2px solid #000000;
     aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 5vw;
-    height: 5vw;
-    padding: 12px;
-    font-size: 4vw;
+    width: 8vh;
+    height: 8vh;
+    padding: 1vh;
+    font-size: 6vh;
     cursor: pointer;
 }
 
 .grid-item:disabled {
     background-color: #cccccc;
     color: #000000;
-    border: 2px solid #000000;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 5vw;
-    height: 5vw;
-    padding: 12px;
-    font-size: 4vw;
     cursor: default;
 }
 
 .grid-item:active {
     background-color: rgba(0, 255, 255, 0.5);
+}
+
+.bottom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: calc(40vh + 6vh); /* Adjust to match grid-container width */
+    margin: 2vh auto;
+    height: 10vh; /* Fixed height */
+}
+
+.player-words-box {
+    width: calc(100% - 10vh); /* Full width minus current-letter-box width and gap */
+    height: 10vh;
+    border: 2px solid #000000;
+    background-color: #f0f0f0;
+    padding: 0.5vh;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.player-words-box h3 {
+    margin-bottom: 0.5vh;
+    text-align: center;
+    font-size: 1.5vh;
+}
+
+#PlayerWordsList {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 0.5vh;
+}
+
+#PlayerWordsList::-webkit-scrollbar {
+    width: 0.5vh;
+}
+
+#PlayerWordsList::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 0.25vh;
+}
+
+#PlayerWordsList::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+}
+
+#PlayerWordsList span {
+    background-color: #2196F3;
+    color: white;
+    padding: 0.25vh 0.5vh;
+    border-radius: 3px;
+    font-size: 1.5vh;
+    white-space: nowrap;
+}
+
+.current-letter-container {
+    width: 8vh;
+    height: 8vh;
+    margin-left: 2vh; /* Add some space between the boxes */
+}
+
+.current-letter-box {
+    background-color: lightskyblue;
+    border: 2px solid #000000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6vh;
 }
 
 footer {
