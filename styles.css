@@ -1,10 +1,11 @@
 :root {
-    --light-color-1: #F7FAFC;
-    --light-color-2: #E2EEF7; 
-    --dark-color-1: #63B3ED;
-    --dark-color-2: #006bcf;
-    --text-color-dark: #000000;
-    --text-color-light: #FFFFFF;
+    --light-color-1: #FDF2E2;
+    --light-color-2: #FAEAC7;
+    --dark-color-1: #E9AF70;
+    --dark-color-2: #D4814F;
+    --text-color-dark: #754B2C;
+    --text-color-light: #FDF2E2;
+    --border-radius: 1vh;
 }
 
 * {
@@ -25,81 +26,112 @@ body {
 
 header {
     background-color: var(--light-color-1);
-    padding: 20px;
+    padding: 2vh;
     text-align: center;
 }
 
 h1 {
     font-family: Arial, sans-serif;
-    font-size: 36px;
+    font-size: 4vh;
     color: var(--text-color-dark);
 }
 
 main {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+    width: 100%;
 }
 
 #Menu, #Game {
     text-align: center;
     align-items: center;
-    width: 100%;
+    width: calc(40vh + 6vh);
+    margin: 0 auto;
 }
 
 #PlayButton, #MenuButton {
     font-family: Arial, sans-serif;
     padding: 1vh 2vh;
+    display: block;
+    width: 50%;
     margin: 1vh auto;
     background-color: var(--dark-color-2);
     color: var(--text-color-light);
     cursor: pointer;
     font-size: 2vh;
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     transition: background-color 0.3s;
 }
 
-#PlayButton:hover, #MenuButton:hover {
+#PlayButton:hover, #MenuButton:hover,
+#PlayButton:active, #MenuButton:active {
     background-color: var(--dark-color-1);
 }
 
-#PlayButton:active, #MenuButton:active {
-    background-color: var(--dark-color-1);
+#Instructions {
+    font-family: Arial, sans-serif;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: calc(40vh + 6vh);
+    height: 63.5vh;
+    background-color: var(--light-color-2);
+    margin: 2vh auto;
+    border-radius: var(--border-radius);
+    font-size: 1.8vh;
+    text-align: left;
+}
+
+#Instructions h2 {
+    margin-bottom: 1vh;
+    color: var(--text-color-dark);
+    text-align: center;
+}
+
+#Instructions p, #Instructions ul {
+    margin-bottom: 1vh;
+    width: 100%;
+}
+
+#Instructions ul {
+    padding-left: 2vh;
 }
 
 .score-container {
     display: flex;
     justify-content: center;
     gap: 1vh;
-    margin-bottom: 1vh;
 }
 
 .score-box {
     background-color: var(--dark-color-2);
     color: var(--text-color-light);
     padding: 1vh 2vh;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     font-size: 3vh;
     font-weight: bold;
-    border: 2px solid var(--text-color-dark);
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(5, 8vh);
     gap: 1vh;
-    background-color: var(--light-color-2);
-    border: 2px solid var(--text-color-dark);
+    background-color: var(--dark-color-1);
     padding: 1vh;
     margin: 2vh auto;
     width: max-content;
+    border-radius: var(--border-radius);
 }
 
 .grid-item {
-    background-color: var(--dark-color-1);
+    background-color: var(--light-color-2);
     color: var(--text-color-light);
-    border: 2px solid var(--text-color-dark);
     aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
@@ -110,6 +142,8 @@ main {
     font-size: 6vh;
     cursor: pointer;
     transition: background-color 0.3s;
+    border-radius: calc(var(--border-radius) / 2);
+    border: none;
 }
 
 .grid-item:disabled {
@@ -134,13 +168,13 @@ main {
 .player-words-box {
     width: calc(100% - 10vh);
     height: 10vh;
-    border: 2px solid var(--text-color-dark);
     background-color: var(--light-color-2);
     padding: 0.5vh;
     text-align: left;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    border-radius: var(--border-radius);
 }
 
 .player-words-box h3 {
@@ -169,14 +203,14 @@ main {
 }
 
 #PlayerWordsList::-webkit-scrollbar-track {
-    background-color: var(--light-color-3);
+    background-color: var(--light-color-2);
 }
 
 #PlayerWordsList span {
     background-color: var(--dark-color-2);
     color: var(--text-color-light);
     padding: 0.25vh 0.5vh;
-    border-radius: 3px;
+    border-radius: 0.5vh;
     font-size: 1.5vh;
     white-space: nowrap;
 }
@@ -190,21 +224,21 @@ main {
 .current-letter-box {
     background-color: var(--dark-color-1);
     color: var(--text-color-light);
-    border: 2px solid var(--text-color-dark);
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 6vh;
+    border-radius: var(--border-radius);
 }
 
 footer {
     font-family: Arial, sans-serif;
     text-align: center;
-    padding: 10px;
+    font-size: 1.5vh;
+    padding: 2.5vh;
     background-color: var(--light-color-1);
     color: var(--text-color-dark);
     margin-top: auto;
-    border-top: 2px solid var(--text-color-dark);
 }
