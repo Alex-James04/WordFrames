@@ -1,5 +1,6 @@
 class WordGame {
-    constructor() {
+    constructor(seed) {
+        this.seed = seed;
         this.resetScore();
         this.resetFoundWords();
         this.wordList = [];
@@ -26,16 +27,27 @@ class WordGame {
 
     generateLetters() {
         let allLetters = [];
+        let rng = this.seededRandom(this.seed);
         for (let i = 0; i < 25; i++){
-            let generatedNumber = Math.floor(Math.random()*88330);
-            for (let element in this.letterDistribution){
-                if (generatedNumber <= this.letterDistribution[element][1]){
-                    allLetters[i] = this.letterDistribution[element][0];
+            let generatedNumber = Math.floor(rng()*88330);
+            console.log(generatedNumber);
+            for (let element of this.letterDistribution){
+                if (generatedNumber <= element[1]){
+                    allLetters[i] = element[0];
                     break;
                 }
             }
         }
         return allLetters;
+    }
+
+    seededRandom(seed) {
+        let state = seed ? parseInt(seed, 36) : Math.random() * 0x100000000;
+    
+        return function() {
+            state = (state * 1664525 + 1013904223) % 0x100000000;
+            return state / 0x100000000;
+        };
     }
 
     initializeGrid() {

@@ -3,20 +3,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const game = document.getElementById("Game");
     const play_button = document.getElementById("PlayButton");
     const menu_button = document.getElementById("MenuButton");
+    const seedInput = document.getElementById("seedInput");
 
     play_button.addEventListener("click", () => {
         menu.style.display = "none";
         game.style.display = "block";
-        startGame();
+        const seed = seedInput.value ? seedInput.value : Date.now().toString();
+        startGame(seed);
     })
 
     menu_button.addEventListener("click", () => {
         menu.style.display = "block";
         game.style.display = "none";
+        seedInput.value = "";
     })
 
-    function startGame(){
-        new WordGame();
+    function startGame(seed){
+        new WordGame(seed);
     }
 
 });

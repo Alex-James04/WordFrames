@@ -103,6 +103,31 @@ main {
     padding-left: 2vh;
 }
 
+.seed-container {
+    margin-bottom: 2vh;
+  }
+  
+  .seed-container label {
+    display: block;
+    margin-bottom: 1vh;
+    font-size: 1.8vh;
+  }
+  
+  #seedInput {
+    width: 100%;
+    padding: 1vh;
+    font-size: 1.8vh;
+    border: 1px solid var(--dark-color-1);
+    border-radius: var(--border-radius);
+    background-color: var(--light-color-2);
+    color: var(--text-color-dark);
+  }
+  
+  #seedInput:focus {
+    outline: none;
+    border-color: var(--dark-color-2);
+  }
+
 .score-container {
     display: flex;
     justify-content: center;
