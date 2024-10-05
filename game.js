@@ -1,6 +1,6 @@
 class WordGame {
     constructor(seed) {
-        this.seed = seed;
+        this.seed = seed || Math.floor(Math.random() * 1000000).toString();
         this.resetScore();
         this.resetFoundWords();
         this.wordList = [];
@@ -12,6 +12,7 @@ class WordGame {
         this.letters = this.generateLetters();
         this.currentLetterIndex = 0;
         this.updateCurrentLetter();
+        this.displayCurrentSeed();
     }
 
     async loadWords() {
@@ -48,6 +49,11 @@ class WordGame {
             state = (state * 1664525 + 1013904223) % 0x100000000;
             return state / 0x100000000;
         };
+    }
+
+    displayCurrentSeed() {
+        const currentSeedElement = document.getElementById('CurrentSeed');
+        currentSeedElement.textContent = this.seed;
     }
 
     initializeGrid() {

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     play_button.addEventListener("click", () => {
         menu.style.display = "none";
         game.style.display = "block";
-        const seed = seedInput.value ? seedInput.value : Date.now().toString();
+        const seed = seedInput.value || null;
         startGame(seed);
     })
 

@@ -103,31 +103,6 @@ main {
     padding-left: 2vh;
 }
 
-.seed-container {
-    margin-bottom: 2vh;
-  }
-  
-  .seed-container label {
-    display: block;
-    margin-bottom: 1vh;
-    font-size: 1.8vh;
-  }
-  
-  #seedInput {
-    width: 100%;
-    padding: 1vh;
-    font-size: 1.8vh;
-    border: 1px solid var(--dark-color-1);
-    border-radius: var(--border-radius);
-    background-color: var(--light-color-2);
-    color: var(--text-color-dark);
-  }
-  
-  #seedInput:focus {
-    outline: none;
-    border-color: var(--dark-color-2);
-  }
-
 .score-container {
     display: flex;
     justify-content: center;
@@ -256,6 +231,63 @@ main {
     align-items: center;
     font-size: 6vh;
     border-radius: var(--border-radius);
+}
+
+.seed-input-container {
+    width: calc(40vh + 6vh);
+    margin: 1vh auto;
+    height: 5vh;
+}
+
+#seedInput {
+    width: 100%;
+    height: 100%;
+    padding: 0 1vh;
+    font-size: 2vh;
+    text-align: center;
+    border: none; 
+    border-radius: var(--border-radius);
+    background-color: var(--light-color-2); 
+    color: var(--text-color-dark);
+}
+
+#seedInput::placeholder {
+    color: var(--text-color-dark);
+    opacity: 0.7;
+}
+
+#seedInput:focus {
+    outline: none;
+    border-color: var(--dark-color-2);
+}
+
+.seed-display-container {
+    width: calc(40vh + 6vh);
+    margin: 1vh auto;
+    height: 5vh;
+}
+
+.seed-display-box {
+    width: 100%;
+    height: 100%;
+    background-color: var(--light-color-2);
+    padding: 0 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius);
+}
+
+.seed-label {
+    font-size: 2vh;
+    color: var(--text-color-dark);
+    margin-right: 1vh;
+}
+
+#CurrentSeed {
+    font-size: 2vh;
+    color: var(--text-color-dark);
+    font-weight: bold;
 }
 
 footer {
