@@ -1,103 +1,172 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+// Game Mode Card Component
+const GameModeCard = ({ title, description, comingSoon = false, onClick }) => {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <button
+      onClick={!comingSoon ? onClick : undefined}
+      disabled={comingSoon}
+    >
+      <div className="flex justify-between items-start">
+        <div>
+          <h3>{title}</h3>
+          <p>{description}</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        {comingSoon && (
+          <span>
+            Coming Soon
+          </span>
+        )}
+      </div>
+    </button>
+  );
+};
+
+// Player Stats Component
+const PlayerStats = () => {
+  const stats = [
+    { label: 'Games Played', value: '47' },
+    { label: 'Average Score', value: '23.4' },
+    { label: 'Best Score', value: '45' },
+    { label: 'Current Streak', value: '3' },
+    { label: 'Longest Streak', value: '12' },
+    { label: 'Total Words Found', value: '342' },
+    { label: 'Favorite Letter', value: 'E' },
+    { label: 'Win Rate', value: '68%' }
+  ];
+
+  return (
+    <div>
+      <h2>Your Stats</h2>
+      <div>
+        {stats.map((stat, index) => (
+          <div key={index}>
+            <span>{stat.label}</span>
+            <span>{stat.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Daily Leaderboard Component
+const DailyLeaderboard = () => {
+  const leaderboard = [
+    { rank: 1, name: 'WordMaster', score: 0 },
+    { rank: 2, name: 'PuzzlePro', score: 0 },
+    { rank: 3, name: 'LetterLord', score: 0 },
+    { rank: 4, name: 'GridGuru', score: 0 },
+    { rank: 5, name: 'VocabVictory', score: 0 },
+    { rank: 6, name: 'WordWizard', score: 0 },
+    { rank: 7, name: 'FrameFinder', score: 0 },
+    { rank: 8, name: 'CrosswordKing', score: 0 },
+    { rank: 9, name: 'LetterLegend', score: 0 },
+    { rank: 10, name: 'WordWarrior', score: 0 }
+  ];
+
+  const getRankClass = (rank) => {
+    if (rank === 1) return 'rank-badge rank-1';
+    if (rank === 2) return 'rank-badge rank-2';
+    if (rank === 3) return 'rank-badge rank-3';
+    return 'rank-badge rank-other';
+  };
+
+  return (
+    <div>
+      <h2>Daily Leaderboard</h2>
+      <div>
+        {leaderboard.map((player) => (
+          <div key={player.rank}>
+            <div>
+              <span className={getRankClass(player.rank)}>
+                {player.rank}
+              </span>
+              <span>{player.name}</span>
+            </div>
+            <span>{player.score}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Game Modes Section
+const GameModes = () => {
+  const handleGameMode = (mode) => {
+    console.log(`Starting ${mode} mode`);
+    // Here you would typically use Next.js router to navigate
+    // router.push(`/game/${mode}`)
+  };
+
+  return (
+    <div>
+      <h2>Game Modes</h2>
+      <div>
+        <GameModeCard
+          title="Daily"
+          description="Play today's puzzle and compete globally"
+          onClick={() => handleGameMode('daily')}
+        />
+        <GameModeCard
+          title="Infinite"
+          description="Endless random puzzles to practice"
+          onClick={() => handleGameMode('infinite')}
+        />
+        <GameModeCard
+          title="Online"
+          description="Multiplayer matches with other players"
+          comingSoon={true}
+        />
+        <GameModeCard
+          title="Free Play"
+          description="Custom games with your own settings"
+          onClick={() => handleGameMode('freeplay')}
+        />
+      </div>
+    </div>
+  );
+};
+
+// Main Homepage Component
+export default function HomePage() {
+  return (
+    <div>
+
+      {/* Desktop Layout */}
+      <div className="hidden md:block flex flex-cols">
+        {/* Left Sidebar - Player Stats */}
+        <div>
+          <PlayerStats/>
+        </div>
+        
+        {/* Center - Game Modes */}
+        <div className="lg:col-span-6 flex items-start justify-center">
+          <div className="w-full max-w-md">
+            <GameModes/>
+          </div>
+        </div>
+        
+        {/* Right Sidebar - Leaderboard */}
+        <div className="lg:col-span-3">
+          <DailyLeaderboard/>
+        </div>
+      </div>
+
+
+      {/* Mobile/Tablet Layout */}
+      <div className="md:hidden">
+        {/* Game Modes */}
+        <GameModes/>
+        
+        {/* Daily Leaderboard */}
+        <DailyLeaderboard/>
+        
+        {/* Player Stats */}
+        <PlayerStats/>
+      </div>
+
     </div>
   );
 }
