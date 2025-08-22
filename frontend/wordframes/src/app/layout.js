@@ -26,10 +26,10 @@ const AccountButton = () => {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-white flex flex-col">
+      <body className="min-h-screen bg-white flex flex-col justify-between">
 
         {/* Header */}
-        <header className="bg-red-50 border-b-2 border-black px-3 py-3 md:px-8 md:py-6">
+        <header className="bg-red-50 border-b-3 border-black px-3 py-3 md:px-8 md:py-6">
           <div className="flex items-center justify-between">
             <SettingsButton />
             <h1 className="text-3xl md:text-5xl font-bold bg-black bg-clip-text">
@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
         </main>
 
         {/* Footer */}
-        <footer className="flex flex-col items-center w-full mx-auto bg-red-100 border-t-2 border-black py-3">
+        <footer className="flex flex-col items-center w-full mx-auto bg-red-100 border-t-3 border-black py-3">
           <div className="text-sm text-black">
             © 2024 Word Frames. All rights reserved.
             </div>
