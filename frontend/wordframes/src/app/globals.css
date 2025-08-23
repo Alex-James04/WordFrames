@@ -9,5 +9,5 @@
 }
 
 .header-icon-symbol {
-  @apply w-9 h-9 md:w-10 md:h-10 text-black
+  @apply w-9 h-9 lg:w-10 lg:h-10 text-black
 }

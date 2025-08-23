@@ -3,8 +3,8 @@
 // Game Description Component
 const GameDescription = () => {
   return (
-    <div className="space-y-4">
-      <h1 className="flex justify-center text-3xl font-bold">
+    <div className="space-y-4 w-full">
+      <h1 className="lg:hidden flex justify-center text-3xl font-bold">
         How to Play
       </h1>
       <div className="flex flex-col bg-red-100 border-3 border-black rounded-4xl py-2 px-5 space-y-1">
@@ -54,13 +54,13 @@ const PlayerStats = () => {
   ];
 
   return (
-    <div className="space-y-4">
-      <h2 className="flex justify-center text-3xl font-bold">Your Stats</h2>
-      <div className="flex flex-col bg-red-100 border-3 border-black rounded-4xl py-3 px-8 space-y-2">
+    <div className="space-y-4 w-full lg:max-w-3/12">
+      <h2 className="flex justify-center text-3xl lg:text-4xl font-bold text-wrap">Your Stats</h2>
+      <div className="flex flex-col bg-red-100 border-3 border-black rounded-4xl py-3 lg:py-0 lg:pt-10 lg:pb-14 px-8 space-y-2 lg:space-y-5">
         {stats.map((stat, index) => (
           <div key={index} className="flex flex-row space-x-3">
-            <span className="lex text-xl font-bold rounded-4xl w-full">{stat.label}</span>
-            <span className="flex justify-center text-xl font-bold  bg-rose-50 rounded-4xl w-1/3">{stat.value}</span>
+            <span className="lex text-xl font-bold rounded-4xl w-full text-wrap">{stat.label}</span>
+            <span className="flex justify-center text-xl font-bold  bg-rose-50 rounded-4xl w-1/3 text-wrap lg:max-h-7">{stat.value}</span>
           </div>
         ))}
       </div>
@@ -84,19 +84,19 @@ const DailyLeaderboard = () => {
   ];
 
   return (
-    <div className="space-y-4">
-      <h2 className="flex justify-center text-3xl font-bold">Daily Leaderboard</h2>
-      <div className="flex flex-col bg-red-100 border-3 border-black rounded-4xl py-3 px-8 space-y-2">
+    <div className="space-y-4 w-full lg:max-w-3/12">
+      <h2 className="flex justify-center text-3xl lg:text-4xl font-bold text-nowrap">Daily Leaderboard</h2>
+      <div className="flex flex-col bg-red-100 border-3 border-black rounded-4xl py-3 lg:py-6 px-8 space-y-2 lg:space-y-5">
         <div className="flex flex-row space-x-3">
-          <span className="text-xl font-bold w-1/6">Rank</span>
-          <span className="flex justify-center text-xl font-bold w-full">Name</span>
-          <span className="flex justify-center text-xl font-bold w-1/3">Score</span>
+          <span className="text-xl font-bold w-1/6 text-wrap">Rank</span>
+          <span className="flex justify-center text-xl font-bold w-full text-wrap">Name</span>
+          <span className="flex justify-center text-xl font-bold w-1/3 text-wrap">Score</span>
         </div>
         {leaderboard.map((player) => (
           <div key={player.rank} className="flex flex-row space-x-3">
-            <span className="text-xl font-bold w-1/6">{player.rank}.</span>
-            <span className="flex justify-center text-lg font-bold bg-rose-50 rounded-4xl w-full">{player.name}</span>
-            <span className="flex justify-center text-lg font-bold  bg-rose-50 rounded-4xl w-1/3">{player.score}</span>
+            <span className="text-xl font-bold w-1/6 text-wrap">{player.rank}.</span>
+            <span className="flex justify-center text-lg font-bold bg-rose-50 rounded-4xl w-full text-wrap">{player.name}</span>
+            <span className="flex justify-center text-lg font-bold  bg-rose-50 rounded-4xl w-1/3 text-wrap">{player.score}</span>
           </div>
         ))}
       </div>
@@ -108,7 +108,7 @@ const DailyLeaderboard = () => {
 const GameModeCard = ({ title, description, onClick }) => {
   return (
     <button onClick={onClick}>
-      <div className="bg-red-300 border-3 border-black rounded-4xl py-2 space-y-1">
+      <div className="bg-red-300 border-3 border-black rounded-4xl py-2 lg:py-4 space-y-1 lg:space-y-2">
         <h3 className="text-2xl font-bold">{title}</h3>
         <p className="text-lg">{description}</p>
       </div>
@@ -125,8 +125,8 @@ const GameModes = () => {
   };
 
   return (
-    <div className="flex flex-col justify-between space-y-4">
-      <h2 className="flex justify-center text-3xl font-bold">Game Modes</h2>
+    <div className="flex flex-col justify-between space-y-4 w-full">
+      <h2 className="flex justify-center text-3xl lg:text-4xl font-bold">Game Modes</h2>
       <div className="flex flex-col space-y-4">
         <GameModeCard
           title="Daily"
@@ -154,54 +154,26 @@ export default function HomePage() {
     <div>
 
       {/*Desktop Layout*/}
-      <div className="hidden sm:flex">
+      <div className="hidden lg:flex flex-row justify-between items-center px-6 py-6 space-x-8">
 
-        {/* Left Sidebar - Player Stats */}
-        <div>
-          <PlayerStats/>
-        </div>
-
-        {/* Center Top - Game Modes */}
-        <div>
-          <div>
-            <GameModes/>
-          </div>
-        </div>
-
-        {/* Center Bottom - Game Description */}
-        <div>
+        <PlayerStats/>
+        <div className="space-y-10">
+          <GameModes/>
           <GameDescription/>
         </div>
-        
-        {/* Right Sidebar - Leaderboard */}
-        <div>
-          <DailyLeaderboard/>
-        </div>
+        <DailyLeaderboard/>
+
       </div>
 
 
       {/*Mobile Layout*/}
-      <div className="sm:hidden flex flex-col justify-between items-center px-6 pt-4 pb-6 space-y-8">
+      <div className="lg:hidden flex flex-col justify-between items-center px-6 pt-4 pb-6 space-y-8">
 
-        {/* Game Modes */}
-        <div className="w-full">
-          <GameModes/>
-        </div>
+        <GameModes/>
+        <DailyLeaderboard/>
+        <PlayerStats/>
+        <GameDescription/>
 
-        {/* Leaderboard */}
-        <div className="w-full">
-          <DailyLeaderboard/>
-        </div>
-
-        {/* Player Stats */}
-        <div className="w-full">
-          <PlayerStats/>
-        </div>
-
-        {/* Game Description */}
-        <div className="w-full">
-          <GameDescription/>
-        </div>
       </div>
 
     </div>
