@@ -1,19 +1,40 @@
 'use client'
 
-// Game Mode Card Component
-const GameModeCard = ({ title, description, comingSoon = false, onClick }) => {
+// Game Description Component
+const GameDescription = () => {
   return (
-    <button
-      onClick={!comingSoon ? onClick : undefined}
-      disabled={comingSoon}
-    >
-      <div className="flex justify-center bg-red-200 items-start border-3 border-black rounded-2xl">
-        <div>
-          <h3 className="text-2xl font-bold my-2">{title}</h3>
-          <p className="text-lg my-3">{description}</p>
-        </div>
+    <div className="space-y-4">
+      <h1 className="flex justify-center text-3xl font-bold">
+        How to Play
+      </h1>
+      <div className="flex flex-col bg-red-100 border-3 border-black rounded-4xl py-2 px-5 space-y-1">
+        <p className="text-lg font-bold">
+          Objective:
+        </p>
+        <ul className="mb-3">
+          <li>
+            - Create words using randomly given letters in a 5x5 grid.
+          </li>
+        </ul>
+        <p className="text-lg font-bold">
+          Gameplay:
+        </p>
+        <ul className="flex flex-col space-y-1">
+          <li>
+            - Click on empty grid spaces to place the current letter.
+          </li>
+          <li>
+            - Form words of 2-5 letters horizontally (left to right) and vertically (top to bottom).
+          </li>
+          <li>
+            - Words can share letters, and words can be within other words (i.e. "at" in "cat").
+          </li>
+          <li>
+            - Points are scored as 1 point per letter in a completed word (2 points for a 2 letter word, 3 points for a 3 letter word, etc.).
+          </li>
+        </ul>
       </div>
-    </button>
+    </div>
   );
 };
 
@@ -33,15 +54,13 @@ const PlayerStats = () => {
   ];
 
   return (
-    <div className="rounded-lg bg-red-200 border-3 border-black h-full w-sm py-4">
-      <h2 className="flex justify-center font-bold text-2xl mb-2">Your Stats</h2>
-      <div className="flex flex-col">
+    <div className="space-y-4">
+      <h2 className="flex justify-center text-3xl font-bold">Your Stats</h2>
+      <div className="flex flex-col bg-red-100 border-3 border-black rounded-4xl py-3 px-8 space-y-2">
         {stats.map((stat, index) => (
-          <div key={index} className="text-lg py-1 px-7">
-            <div className="flex justify-between text-lg px-4 py-2 bg-rose-100 rounded-lg">
-              <span className="font-bold">{stat.label}</span>
-              <span className="font-bold">{stat.value}</span>
-            </div>
+          <div key={index} className="flex flex-row space-x-3">
+            <span className="lex text-xl font-bold rounded-4xl w-full">{stat.label}</span>
+            <span className="flex justify-center text-xl font-bold  bg-rose-50 rounded-4xl w-1/3">{stat.value}</span>
           </div>
         ))}
       </div>
@@ -65,20 +84,35 @@ const DailyLeaderboard = () => {
   ];
 
   return (
-    <div className="rounded-lg bg-red-200 border-3 border-black h-full w-sm py-4">
-      <h2 className="flex justify-center font-bold text-2xl mb-2">Daily Leaderboard</h2>
-      <div className="flex flex-col">
+    <div className="space-y-4">
+      <h2 className="flex justify-center text-3xl font-bold">Daily Leaderboard</h2>
+      <div className="flex flex-col bg-red-100 border-3 border-black rounded-4xl py-3 px-8 space-y-2">
+        <div className="flex flex-row space-x-3">
+          <span className="text-xl font-bold w-1/6">Rank</span>
+          <span className="flex justify-center text-xl font-bold w-full">Name</span>
+          <span className="flex justify-center text-xl font-bold w-1/3">Score</span>
+        </div>
         {leaderboard.map((player) => (
-          <div key={player.rank} className="text-lg py-1 px-7">
-            <div className="flex justify-between text-lg px-4 py-2 bg-rose-100 rounded-lg">
-              <span className="font-bold">{player.rank}</span>
-              <span className="font-bold">{player.name}</span>
-              <span className="font-bold">{player.score}</span>
-            </div>
+          <div key={player.rank} className="flex flex-row space-x-3">
+            <span className="text-xl font-bold w-1/6">{player.rank}.</span>
+            <span className="flex justify-center text-lg font-bold bg-rose-50 rounded-4xl w-full">{player.name}</span>
+            <span className="flex justify-center text-lg font-bold  bg-rose-50 rounded-4xl w-1/3">{player.score}</span>
           </div>
         ))}
       </div>
     </div>
+  );
+};
+
+// Game Mode Card Component
+const GameModeCard = ({ title, description, onClick }) => {
+  return (
+    <button onClick={onClick}>
+      <div className="bg-red-300 border-3 border-black rounded-4xl py-2 space-y-1">
+        <h3 className="text-2xl font-bold">{title}</h3>
+        <p className="text-lg">{description}</p>
+      </div>
+    </button>
   );
 };
 
@@ -91,9 +125,9 @@ const GameModes = () => {
   };
 
   return (
-    <div>
-      <h2 className="flex justify-center text-4xl font-bold mb-10">Game Modes</h2>
-      <div className="flex flex-col space-y-8">
+    <div className="flex flex-col justify-between space-y-4">
+      <h2 className="flex justify-center text-3xl font-bold">Game Modes</h2>
+      <div className="flex flex-col space-y-4">
         <GameModeCard
           title="Daily"
           description="Play today's puzzle and compete globally"
@@ -101,13 +135,8 @@ const GameModes = () => {
         />
         <GameModeCard
           title="Infinite"
-          description="Endless random puzzles to practice"
+          description="Endless puzzles to play"
           onClick={() => handleGameMode('infinite')}
-        />
-        <GameModeCard
-          title="Online"
-          description="Multiplayer mode to compete against friends"
-          comingSoon={true}
         />
         <GameModeCard
           title="Free Play"
@@ -124,18 +153,24 @@ export default function HomePage() {
   return (
     <div>
 
-      {/* Desktop Layout */}
-      <div className="flex flex-row justify-evenly space-x-5">
+      {/*Desktop Layout*/}
+      <div className="hidden sm:flex">
+
         {/* Left Sidebar - Player Stats */}
         <div>
           <PlayerStats/>
         </div>
-        
-        {/* Center - Game Modes */}
-        <div className="flex items-start justify-center">
-          <div className="w-3xl">
+
+        {/* Center Top - Game Modes */}
+        <div>
+          <div>
             <GameModes/>
           </div>
+        </div>
+
+        {/* Center Bottom - Game Description */}
+        <div>
+          <GameDescription/>
         </div>
         
         {/* Right Sidebar - Leaderboard */}
@@ -144,8 +179,31 @@ export default function HomePage() {
         </div>
       </div>
 
+
+      {/*Mobile Layout*/}
+      <div className="sm:hidden flex flex-col justify-between items-center px-6 pt-4 pb-6 space-y-8">
+
+        {/* Game Modes */}
+        <div className="w-full">
+          <GameModes/>
+        </div>
+
+        {/* Leaderboard */}
+        <div className="w-full">
+          <DailyLeaderboard/>
+        </div>
+
+        {/* Player Stats */}
+        <div className="w-full">
+          <PlayerStats/>
+        </div>
+
+        {/* Game Description */}
+        <div className="w-full">
+          <GameDescription/>
+        </div>
+      </div>
+
     </div>
-
-
   );
 }

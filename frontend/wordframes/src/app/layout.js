@@ -23,18 +23,27 @@ const AccountButton = () => {
   );
 };
 
+// Home Page Buttom Component
+const HomeButton = () => {
+  return (
+    <button>
+      <h1 className="text-4xl sm:text-5xl font-bold bg-black bg-clip-text">
+        Word Frames
+      </h1>
+    </button>
+  );
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="min-h-screen bg-white flex flex-col justify-between">
 
         {/* Header */}
-        <header className="bg-red-50 border-b-3 border-black px-3 py-3 md:px-8 md:py-6">
+        <header className="bg-red-50 border-b-3 border-black px-3 py-3 sm:px-8 sm:py-6">
           <div className="flex items-center justify-between">
-            <SettingsButton />
-            <h1 className="text-3xl md:text-5xl font-bold bg-black bg-clip-text">
-              Word Frames
-            </h1>
+            <SettingsButton/>
+            <HomeButton/>
             <AccountButton />
           </div>
         </header>
