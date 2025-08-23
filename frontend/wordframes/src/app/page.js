@@ -30,7 +30,7 @@ const GameDescription = () => {
             - Words can share letters, and words can be within other words (i.e. "at" in "cat").
           </li>
           <li>
-            - Points are scored as 1 point per letter in a completed word (2 points for a 2 letter word, 3 points for a 3 letter word, etc.).
+            - Points are scored as 1 point per letter in a completed word (2 letter word = 2 points, 3 letter word = 3 points, etc.).
           </li>
         </ul>
       </div>
